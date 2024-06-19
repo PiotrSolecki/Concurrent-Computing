@@ -38,6 +38,7 @@ public class main {
 
     private static void sorting(String filename, int numberOfThreads){
         ArrayList<Integer> listFromFile = new ArrayList<>();
+        ArrayList<Integer> sortedList = null;
 
         try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
             String linia;
@@ -48,27 +49,28 @@ public class main {
             e.printStackTrace();
         }
 
-        long startTime = System.currentTimeMillis();
+        long startTimeNs = System.nanoTime();
 
         ThreadClass thread = new ThreadClass(listFromFile);
         thread.start();
 
         try {
             thread.join();
-            ArrayList<Integer> sortedList = thread.getSortedList();
-            System.out.println("Posortowana lista: " + sortedList);
+            sortedList = thread.getSortedList();
+
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
+        System.out.println("Posortowana lista: " + sortedList);
 
 
 
         //Merge list z threadów
 
         //Wypisanie czasu
-        long endTime = System.currentTimeMillis();
-        System.out.println("Time for " + numberOfThreads + " thread/s: " + (endTime - startTime) + " ms");
+        long endTimeNs = System.nanoTime();
+        System.out.println("Time for " + numberOfThreads + " thread(s): " + ((endTimeNs - startTimeNs)/ 1_000.0) + " μs - Microseconds");
 
         //Przekazanie posortowanej listy do nowego pliku
     }
