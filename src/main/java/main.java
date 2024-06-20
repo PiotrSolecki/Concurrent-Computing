@@ -7,22 +7,25 @@ public class main {
     public static void main(String[] args) throws IOException {
 
         System.out.println("\n<<<   Sorting 1000 number file   >>>");
-        sorting("numbers1k.txt", "sorted1k.txt", 1, 1000);
-        sorting("numbers1k.txt", "sorted1k.txt", 2, 1000);
-        sorting("numbers1k.txt", "sorted1k.txt", 3, 1000);
-        sorting("numbers1k.txt", "sorted1k.txt", 4, 1000);
+        generateNumbersFile("numbers1k.txt", 1000);
+        sorting("numbers1k.txt", "sorted1k.txt", 1);
+        sorting("numbers1k.txt", "sorted1k.txt", 2);
+        sorting("numbers1k.txt", "sorted1k.txt", 3);
+        sorting("numbers1k.txt", "sorted1k.txt", 4);
 
         System.out.println("\n<<<   Sorting 10000 number file   >>>");
-        sorting("numbers10k.txt", "sorted10k.txt", 1, 10000);
-        sorting("numbers10k.txt", "sorted10k.txt", 2, 10000);
-        sorting("numbers10k.txt", "sorted10k.txt", 3, 10000);
-        sorting("numbers10k.txt", "sorted10k.txt", 4, 10000);
+        generateNumbersFile("numbers10k.txt", 10000);
+        sorting("numbers10k.txt", "sorted10k.txt", 1);
+        sorting("numbers10k.txt", "sorted10k.txt", 2);
+        sorting("numbers10k.txt", "sorted10k.txt", 3);
+        sorting("numbers10k.txt", "sorted10k.txt", 4);
 
         System.out.println("\n<<<   Sorting 20000 number file   >>>");
-        sorting("numbers20k.txt", "sorted20k.txt", 1, 20000);
-        sorting("numbers20k.txt", "sorted20k.txt", 2, 20000);
-        sorting("numbers20k.txt", "sorted20k.txt", 3, 20000);
-        sorting("numbers20k.txt", "sorted20k.txt", 4, 20000);
+        generateNumbersFile("numbers20k.txt", 20000);
+        sorting("numbers20k.txt", "sorted20k.txt", 1);
+        sorting("numbers20k.txt", "sorted20k.txt", 2);
+        sorting("numbers20k.txt", "sorted20k.txt", 3);
+        sorting("numbers20k.txt", "sorted20k.txt", 4);
 
     }
 
@@ -35,8 +38,7 @@ public class main {
         }
     }
 
-    private static void sorting(String inputFile, String outputFile, int numberOfThreads, int numberCount) throws IOException {
-        generateNumbersFile(inputFile, numberCount);
+    private static void sorting(String inputFile, String outputFile, int numberOfThreads) {
         ArrayList<Integer> listFromFile = new ArrayList<>();
         List<ArrayList<Integer>> sortedSublists = new ArrayList<>();
 

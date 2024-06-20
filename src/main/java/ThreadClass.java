@@ -14,7 +14,7 @@ public class ThreadClass extends Thread {
     @Override
     public void run() {
         sortedList = bubbleSort(unorderedList);
-        System.out.println("- Thread " + threadNumber + " sorted chunk");
+        System.out.println("- Finished sorting chunk " + threadNumber + ".");
     }
 
     private ArrayList<Integer> bubbleSort(ArrayList<Integer> startingList) {
