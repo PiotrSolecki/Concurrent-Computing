@@ -6,12 +6,6 @@ import java.util.Random;
 public class main {
     public static void main(String[] args) throws IOException {
 
-        System.out.println("<<<   Sorting 100 number file   >>>");
-        sorting("numbers0.1k.txt", "sorted0.1k.txt", 1, 100);
-        sorting("numbers0.1k.txt", "sorted0.1k.txt", 2, 100);
-        sorting("numbers0.1k.txt", "sorted0.1k.txt", 3, 100);
-        sorting("numbers0.1k.txt", "sorted0.1k.txt", 4, 100);
-
         System.out.println("\n<<<   Sorting 1000 number file   >>>");
         sorting("numbers1k.txt", "sorted1k.txt", 1, 1000);
         sorting("numbers1k.txt", "sorted1k.txt", 2, 1000);
@@ -55,7 +49,7 @@ public class main {
             e.printStackTrace();
         }
 
-        long startTimeNs = System.nanoTime();
+        long startTime = System.currentTimeMillis();
 
         int chunkSize = (int) Math.ceil((double) listFromFile.size() / numberOfThreads);
         ThreadClass[] threads = new ThreadClass[numberOfThreads];
@@ -79,8 +73,8 @@ public class main {
 
         ArrayList<Integer> sortedList = mergeSortedLists(sortedSublists);
 
-        long endTimeNs = System.nanoTime();
-        System.out.println("Time for " + numberOfThreads + " thread(s): " + ((endTimeNs - startTimeNs) / 1_000.0) + " μs - Microseconds\n");
+        long endTime = System.currentTimeMillis();
+        System.out.println("Time for " + numberOfThreads + " thread(s): " + (endTime - startTime) + " ms.\n");
 
         writeListToFile(sortedList, outputFile);
     }
